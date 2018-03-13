@@ -1,0 +1,17 @@
+name: test-results-app
+recipe: laravel
+config:
+  webroot: ./public
+  xdebug: true
+  database: mariadb:10.1
+  cache: redis
+Services:
+  appserver:
+    composer:
+    build:
+      - cd $LANDO_MOUNT && composer install
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
